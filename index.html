@@ -25,50 +25,35 @@
             color: #000000;
             font-size: 14px;
         }
+        h2, h3 {
+            color: #000000;
+            font-size: 18px;
+            text-align: left;
+            margin: 20px auto 10px;
+            max-width: 800px;
+        }
         .profile-image {
             border: 1px solid #000000;
-            padding: 6px;
-            width: 300px;
-            height: 200px;
+            padding: 3px;
+            width: 450px;
+            height: 300px;
             margin-bottom: 20px;
         }
-        .publications {
+        .list-section {
             list-style-type: disc;
             padding-left: 40px;
             text-align: left;
             max-width: 800px;
             margin: 0 auto 20px;
         }
-        .publications li {
+        .list-section li {
             margin: 11px 0;
         }
-        .publications li a {
-            color: #000000;
-            text-decoration: none;
-        }
-        .publications li a.doi {
+        .list-section li a {
             color: #0033CC;
             text-decoration: none;
         }
-        .publications li a.selfarchive {
-            color: #0033CC;
-            text-decoration: none;
-        }
-        .publications li a:hover {
-            text-decoration: underline;
-        }
-        .additional-links {
-            color: #FF6666;
-            font-size: 16px;
-            margin-top: 20px;
-        }
-        .additional-links a {
-            color: #FF6666;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-        }
-        .additional-links a:hover {
+        .list-section li a:hover {
             text-decoration: underline;
         }
     </style>
@@ -81,7 +66,7 @@
 <img src="pic_houken.jpg" alt="Profile Image" class="profile-image">
     
 <h2>Publications</h2>
-<ul class="publications">
+<ul class="list-section">
     <li>Azuma, K., et al. "Quantitative evaluation of the influence of dopaminergic neuron on flapping locomotion." 2013 IEEE 26th International Conference on Micro Electro Mechanical Systems (MEMS). IEEE, 2013. <a href="#" class="doi">DOI</a> | <a href="#" class="selfarchive">SelfArchive</a></li>
     <li>Tanimura, J, et al. "The clinical course and potential underlying mechanisms of everolimus-induced hyperglycemia." Endocrine Journal 66.7 (2019): 615-620. <a href="#" class="doi">DOI</a> | <a href="#" class="selfarchive">SelfArchive</a></li>
     <li>Tanimura, J, et al. "Upward gaze palsy and convergence insufficiency as a rare presentation of primary intraventricular haemorrhage." BMJ Case Reports 14.10 (2021): e241340. <a href="#" class="doi">DOI</a> | <a href="#" class="selfarchive">SelfArchive</a></li>
@@ -94,10 +79,11 @@
     <li>Okumura, M, et al. "Jaw-opening dystonia in Parkinson’s disease improved by Foslevodopa-foscarbidopa Continuous Subcutaneous (FOCS) infusion." PREPRINT (2024). <a href="#" class="doi">DOI</a> | <a href="#" class="selfarchive">SelfArchive</a></li>
 </ul>
 
-<div class="additional-links">
-    <a href="steve2005.html">Steve Jobs Presentation 2005</a>
-    <a href="whatisjazz.html">What is Jazz? by Leonard Bernstein</a>
-</div>
+<h3>Links</h3>
+<ul class="list-section">
+    <li><a href="steve2005.html">Steve Jobs Presentation 2005</a></li>
+    <li><a href="whatisjazz.html">What is Jazz? by Leonard Bernstein</a></li>
+</ul>
 
 </body>
 </html>
