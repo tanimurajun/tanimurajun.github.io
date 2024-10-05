@@ -7,11 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jun Tanimura - Research & Publications</title>
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #ffffff;
             color: #000000;
-            margin: 0;
             padding: 20px;
             text-align: center;
         }
@@ -25,20 +29,17 @@
             color: #000000;
             font-size: 14px;
         }
-        h2, h3 {
-            color: #000000;
-            font-size: 18px;
-            text-align: left;
-            margin: 20px auto 10px;
-            max-width: 800px;
+        .profile-container {
+            text-align: center;
         }
         .profile-image {
+            display: block;
+            margin: 0 auto 20px;
             border: 1px solid #000000;
             padding: 7px;
             max-width: 100%;
             height: auto;
             width: 450px;
-            margin-bottom: 20px;
         }
         .list-section {
             list-style-type: disc;
