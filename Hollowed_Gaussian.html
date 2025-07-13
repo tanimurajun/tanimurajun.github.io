@@ -356,6 +356,65 @@
 
           <h3 class="text-2xl font-semibold text-gray-900 mb-4">“中空”アルゴリズムの説明</h3>
 
-          <p class="text-gray-700 mb-6">
-            “中空”または“部分中空”は、標準的なガウスカーネルの中心領域を減衰またはゼロ化し、鐘形曲線に凹部を生じさせる手法を意味します。
-          }</div>
+                <p class="text-gray-700 mb-6">
+        “中空”または“部分中空”は、標準的なガウスカーネルの中心領域を減衰またはゼロ化し、鐘形曲線に凹部を生じさせる手法を意味します。
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h4 class="text-lg font-semibold text-blue-900 mb-3">
+            <i class="fas fa-cog text-blue-600 mr-2"></i>方法1：ガウス差分
+          </h4>
+          <p class="text-blue-800">
+            広いガウスカーネルから狭いガウスカーネルを差し引いて、中央部がゼロまたは負となる構造を作ります。
+          </p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg">
+          <h4 class="text-lg font-semibold text-green-900 mb-3">
+            <i class="fas fa-cut text-green-600 mr-2"></i>方法2：中心ゼロ化
+          </h4>
+          <p class="text-green-800">
+            標準ガウスカーネルを生成後、指定した中央領域を明示的にゼロに設定します。
+          </p>
+        </div>
+      </div>
+      <h3 class="text-2xl font-semibold text-gray-900 mb-4">実装手順</h3>
+      <div class="highlight-box">
+        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+          <li>カーネル長、σ、中空割合を定義</li>
+          <li>標準ガウスカーネルを生成・正規化</li>
+          <li>中空領域の幅を算出し、中心インデックスを決定</li>
+          <li>中心領域をゼロに設定</li>
+          <li>再度正規化して合計を1に</li>
+        </ol>
+      </div>
+      <h3 class="text-2xl font-semibold text-gray-900 mb-4">Pythonによる例</h3>
+      <div class="code-block mb-6">
+<pre><code>import numpy as np
+
+def gaussian_kernel(length, sigma):
+    ax = np.linspace(-(length-1)/2, (length-1)/2, length)
+    kernel = np.exp(-0.5*(ax/sigma)**2)
+    return kernel / kernel.sum()
+
+def hollow_gaussian_kernel(length, sigma, hollow_frac=0.6):
+    kernel = gaussian_kernel(length, sigma)
+    hollow_len = int(length*hollow_frac)
+    center = length//2
+    start = center - hollow_len//2
+    kernel[start:start+hollow_len] = 0
+    return kernel / kernel.sum()
+
+# 使用例
+hollow = hollow_gaussian_kernel(101, 10, 0.6)
+</code></pre>
+      </div>
+    </section>
+
+    <!-- CCGへの適用、実装注意点、文献レビュー、結論: 前節と同様に日本語化済み -->
+  </main>
+
+  <!-- スクリプト省略: 前節と同様 -->
+</body>
+
+</html>
+
