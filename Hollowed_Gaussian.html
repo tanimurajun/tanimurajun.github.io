@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中空ガウスフィルタのCCG計算への適用性</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #64748b;
+            --accent: #f59e0b;
+            --background: #fefefe;
+            --surface: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        .serif {
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: rgba(248, 250, 252, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid #e2e8f0;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            min-height: 60vh;
+        }
+        
+        .hero-text {
+            z-index: 2;
+            position: relative;
+        }
+        
+        .hero-visual {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        
+        .kernel-visualization {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 60%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .section-header {
+            border-left: 4px solid var(--primary);
+            padding-left: 1.5rem;
+            margin: 3rem 0 2rem 0;
+        }
+        
+        .citation {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted var(--primary);
+        }
+        
+        .citation:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .parameter-table {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+        
+        .parameter-table th {
+            background: var(--surface);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .parameter-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .toc-fixed.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .toc-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        @media (max-width: 1024px) {
+            #mobile-menu-open {
+                display: block;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            #mobile-menu-open {
+                display: none;
+            }
+            
+            .toc-fixed {
+                transform: translateX(0) !important;
+            }
+            
+            .toc-overlay {
+                display: none !important;
+            }
+        }
+    </style>
+  </head>
+
+  <body>
+    <!-- 目次 -->
+    <nav class="toc-fixed">
+      <div class="mb-8">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">目次</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#introduction" class="block py-1 px-2 rounded hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">はじめに</a>
+          </li>
+          <li>
+            <a href="#understanding" class="block py-1 px-2 rounded hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">CCG解析における中空ガウスフィルタ</a>
+          </li>
+          <li>
+            <a href="#construction" class="block py-1 px-2 rounded hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">ガウス核の構築</a>
+          </li>
+          <li>
+            <a href="#application" class="block py-1 px-2 rounded hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">CCGへの適用</a>
+          </li>
+          <li>
+            <a href="#implementation" class="block py-1 px-2 rounded hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">実装上の注意点</a>
+          </li>
+          <li>
+            <a href="#literature" class="block py-1 px-2 rounded hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">文献レビュー</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mt-8 pt-4 border-t border-gray-200">
+        <p class="text-xs text-gray-500 mb-2">主要パラメータ</p>
+        <div class="space-y-1 text-xs">
+          <div class="bg-blue-50 p-2 rounded">
+            <span class="font-medium">σ:</span> 5-10 ms
+          </div>
+          <div class="bg-amber-50 p-2 rounded">
+            <span class="font-medium">中空割合:</span> 60%
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+      <!-- ヒーローセクション -->
+      <section class="hero-section px-8 py-12">
+        <div class="max-w-6xl mx-auto">
+          <div class="hero-grid">
+            <div class="hero-text">
+              <h1 class="serif text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                <em class="text-blue-600">中空ガウスフィルタ</em>のCCG計算への適用性
+              </h1>
+              <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                神経科学研究における実験データの実装と応用研究
+              </p>
+
+              <!-- 重要ポイント -->
+              <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="bg-white p-4 rounded-lg border border-gray-200">
+                  <div class="text-2xl font-bold text-blue-600">60%</div>
+                  <div class="text-sm text-gray-600">典型的な中空割合</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-gray-200">
+                  <div class="text-2xl font-bold text-amber-600">5-10 ms</div>
+                  <div class="text-sm text-gray-600">標準偏差範囲</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="kernel-visualization flex items-center justify-center">
+                <div class="text-center text-white">
+                  <i class="fas fa-wave-square text-4xl mb-4 opacity-80"></i>
+                  <p class="text-lg font-medium">ガウス核の可視化</p>
+                  <p class="text-sm opacity-80">中央60%を中空化</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="max-w-4xl mx-auto px-8 py-12">
+        <!-- はじめに -->
+        <section id="introduction" class="mb-16">
+          <div class="section-header"><h2 class="serif text-3xl font-bold text-gray-900">はじめに</h2></div>
+
+          <p class="text-lg text-gray-700 mb-6">
+            神経科学の分野では、<strong>中空ガウスフィルタ</strong>がニューロン放電データの相互相関図（CCG）を分析するための専門的なツールとして用いられています。これらのフィルタの主な目的は<strong>低周波基線CCG（λ_slow）を生成する</strong>ことであり、短い遅延のシナプス結合を示す顕著な相互作用を識別する上で重要です。
+          </p>
+
+          <div class="highlight-box">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3"><i class="fas fa-lightbulb text-amber-500 mr-2"></i>主要な洞察</h3>
+            <p class="text-gray-700">
+              観測されたCCGを中央部分が減衰またはゼロ化されたガウスカーネルと畳み込むことで、CCG中央のピークの影響を低減し、より正確に低周波背景活動を表す基線を推定できます。
+            </p>
+          </div>
+
+          <p class="text-gray-700 mb-6">
+            本技術では<strong>中空割合（通常60%）</strong>を用いてガウスカーネルを変更し、<strong>標準偏差（通常5 msまたは10 ms）</strong>を指定してカーネル幅を制御します。概念とパラメータは文献で確立されていますが、詳細なアルゴリズム実装は広く公開されておらず、研究者が独自に実装する必要があります。
+          </p>
+        </section>
+
+        <!-- CCG解析における中空ガウスフィルタ -->
+        <section id="understanding" class="mb-16">
+          <div class="section-header"><h2 class="serif text-3xl font-bold text-gray-900">CCG解析における中空ガウスフィルタ</h2></div>
+
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">神経科学における定義と用途</h3>
+
+          <p class="text-gray-700 mb-6">
+            ニューロン放電データ分析での相互相関図（CCG）は、参照ニューロンの放電に対して別のニューロンが異なる遅延（τ）で放電する確率を示し、機能的結合を特定する基礎ツールです。
+          </p>
+
+          <p class="text-gray-700 mb-6">
+            短遅延相互作用（シナプス結合など）と緩やかな背景活動を区別するために、<strong>部分中空ガウスカーネル</strong>と呼ばれるカーネルと観測CCGを畳み込む手法が用いられます
+            <a href="https://www.biorxiv.org/content/10.1101/2022.10.03.510694v1.full.pdf" class="citation" target="_blank">[56]</a>、
+            <a href="https://escholarship.org/content/qt88p0463m/qt88p0463m.pdf" class="citation" target="_blank">[75]</a>。
+          </p>
+
+          <div class="bg-gray-50 p-6 rounded-lg mb-6">
+            <h4 class="text-lg font-semibold text-gray-900 mb-3">主な応用</h4>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i><strong>基線CCG生成：</strong>低周波基線推定 (λ_slow)</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i><strong>活動分離：</strong>背景活動とシナプス相互作用の区別</li>
+              <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i><strong>信号対雑音比向上：</strong>シナプス結合検出</li>
+            </ul>
+          </div>
+
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">典型的パラメータ：標準偏差と中空割合</h3>
+
+          <p class="text-gray-700 mb-6">
+            部分中空ガウスカーネルには、カーネル形状とフィルタ特性を定義する主なパラメータとして<strong>標準偏差（σ）</strong>と<strong>中空割合</strong>があります。
+          </p>
+
+          <div class="parameter-table">
+            <table class="w-full">
+              <thead>
+                <tr><th>パラメータ</th><th>典型値</th><th>説明</th><th>参考文献</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="font-medium">標準偏差 (σ)</td><td class="text-blue-600 font-semibold">10 ms, 5 ms</td><td>ガウスカーネルの幅と平滑度を決定</td><td><a href="https://www.biorxiv.org/content/10.1101/2022.10.03.510694v1.full.pdf" class="citation" target="_blank">[56]</a>, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11946909/" class="citation" target="_blank">[129]</a></td></tr>
+                <tr><td class="font-medium">中空割合</td><td class="text-amber-600 font-semibold">60%</td><td>カーネル中央部を減衰またはゼロ化する割合</td><td><a href="https://www.biorxiv.org/content/10.1101/2022.10.03.510694v1.full.pdf" class="citation" target="_blank">[56]</a>, <a href="https://escholarship.org/content/qt88p0463m/qt88p0463m.pdf" class="citation" target="_blank">[75]</a></td></tr>
+                <tr><td class="font-medium">カーネルサポート領域</td><td>例：6δ</td><td>カーネルの総幅または適用範囲</td><td><a href="https://www.nature.com/articles/s42003-022-03450-5" class="citation"	target="_blank">[118]</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ガウス核の構築 -->
+        <section id="construction" class="mb-16">
+          <div class="section-header"><h2 class="serif text-3xl font-bold text-gray-900">中空ガウスカーネルの構築</h2></div>
+
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">“中空”アルゴリズムの説明</h3>
+
+          <p class="text-gray-700 mb-6">
+            “中空”または“部分中空”は、標準的なガウスカーネルの中心領域を減衰またはゼロ化し、鐘形曲線に凹部を生じさせる手法を意味します。
+          }</div>
