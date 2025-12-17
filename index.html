@@ -57,7 +57,7 @@
             border: none;
         }
         .list-section {
-            list-style-type: none;
+            list-style-type: disc;
             padding-left: 40px;
             text-align: left;
             max-width: 800px;
@@ -65,8 +65,6 @@
         }
         .list-section li {
             margin: 12px 0;
-            display: flex;
-            align-items: flex-start;
         }
         .list-section li a {
             color: #0075B0;
@@ -76,14 +74,9 @@
             text-decoration: underline;
         }
         .pub-icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .pub-text {
-            flex: 1;
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -92,22 +85,22 @@
 <!-- アイコン定義 -->
 <svg style="display: none;">
     <symbol id="icon-original-article" viewBox="0 0 24 24">
-        <path d="M3 3v18h18" stroke="#5F5F5F" stroke-width="2" fill="none"/>
-        <path d="M7 16L12 11L16 15L20 7" stroke="#5F5F5F" stroke-width="2" fill="none"/>
+        <path d="M3 6v12h18" stroke="#000000" stroke-width="2" fill="none"/>
+        <path d="M7 14L12 10L16 13L20 8" stroke="#000000" stroke-width="2" fill="none"/>
     </symbol>
     
     <symbol id="icon-case-report" viewBox="0 0 24 24">
-        <circle cx="12" cy="8" r="3" stroke="#5F5F5F" stroke-width="2" fill="none"/>
-        <path d="M6 16v-1c0-2 2-3 6-3s6 1 6 3v1" stroke="#5F5F5F" stroke-width="2" fill="none"/>
+        <circle cx="12" cy="8" r="3" stroke="#000000" stroke-width="2" fill="none"/>
+        <path d="M6 16v-1c0-2 2-3 6-3s6 1 6 3v1" stroke="#000000" stroke-width="2" fill="none"/>
     </symbol>
     
     <symbol id="icon-case-series" viewBox="0 0 24 24">
-        <circle cx="6" cy="7" r="2" stroke="#5F5F5F" stroke-width="2" fill="none"/>
-        <path d="M2 15v-1c0-1.3 1.3-2 4-2" stroke="#5F5F5F" stroke-width="2" fill="none"/>
-        <circle cx="12" cy="7" r="2" stroke="#5F5F5F" stroke-width="2" fill="none"/>
-        <path d="M8 15v-1c0-1.3 1.3-2 4-2s4 0.7 4 2v1" stroke="#5F5F5F" stroke-width="2" fill="none"/>
-        <circle cx="18" cy="7" r="2" stroke="#5F5F5F" stroke-width="2" fill="none"/>
-        <path d="M22 15v-1c0-1.3-1.3-2-4-2" stroke="#5F5F5F" stroke-width="2" fill="none"/>
+        <circle cx="6" cy="7" r="2" stroke="#000000" stroke-width="2" fill="none"/>
+        <path d="M2 15v-1c0-1.3 1.3-2 4-2" stroke="#000000" stroke-width="2" fill="none"/>
+        <circle cx="12" cy="7" r="2" stroke="#000000" stroke-width="2" fill="none"/>
+        <path d="M8 15v-1c0-1.3 1.3-2 4-2s4 0.7 4 2v1" stroke="#000000" stroke-width="2" fill="none"/>
+        <circle cx="18" cy="7" r="2" stroke="#000000" stroke-width="2" fill="none"/>
+        <path d="M22 15v-1c0-1.3-1.3-2-4-2" stroke="#000000" stroke-width="2" fill="none"/>
     </symbol>
 </svg>
 
@@ -119,70 +112,28 @@
     
 <h2>Publications</h2>
 <ul class="list-section">
-    <li>
-        <svg class="pub-icon"><use href="#icon-original-article"/></svg>
-        <div class="pub-text"><b>Tanimura J</b>, Yako T, Hahimoto T. "Chronic adaptive versus conventional deep brain stimulation in patients with Parkinson's disease: A randomized crossover trial with exploratory analysis of baseline-dependent response patterns" Available at medRxiv, posted on September 8, 2025: <a href="https://doi.org/10.1101/2025.09.07.25335282">https://doi.org/10.1101/2025.09.07.25335282</a>. | Preprint</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-original-article"/></svg>
-        <div class="pub-text"><b>Tanimura J</b>, Yamamoto T, Takahashi Y. "Clinical measures associated with aspiration risk in multiple system atrophy: a cross-sectional study" Clinical Parkinsonism & Related Disorders. 2025. <a href="https://doi.org/10.1016/j.prdoa.2025.100401">doi: 10.1016/j.prdoa.2025.100401</a>. | Original Article</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-original-article"/></svg>
-        <div class="pub-text"><b>Tanimura J</b>, Yamamoto T, Shigemoto Y, Sato N, Takahashi Y. "Dopamine transporter imaging to predict the risk of aspiration in patients with Parkinson's disease" Parkinsonism & Related Disorders. 2025;132:107307. <a href="https://doi.org/10.1016/j.parkreldis.2025.107307">doi:10.1016/j.parkreldis.2025.107307</a>. | <a href="paper/PRD2025.pdf">SelfArchive</a> | Original Article</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-case-series"/></svg>
-        <div class="pub-text">Hashimoto T, <b>Tanimura J</b>, Yako T. "Effective Target Sites in Thalamic Stimulation for Focal Hand Dystonia" Stereotact Funct Neurosurg. 2025;103:201–205.<a href="https://doi.org/10.1159/000543478">doi:10.1159/000543478</a>. | Case Series</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-case-report"/></svg>
-        <div class="pub-text">Okumura M, Mukai Y, <b>Tanimura J</b>, Takahashi Y. "Jaw-opening dystonia in Parkinson's disease improved by foslevodopa-foscarbidopa continuous subcutaneous infusion: a case report" Neurol Sci. 2024;45:5939. <a href="https://doi.org/10.1007/s10072-024-07740-0">doi:10.1007/s10072-024-07740-0</a>. | Case Report</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-case-report"/></svg>
-        <div class="pub-text"><b>Tanimura J</b>, and Hashimoto T. "Case of tizanidine withdrawal showing hallucination, decorticate posture and tremor, with hypersympathetic vital signs" BMJ Case Reports. 2024;17:e254966. <a href="https://doi.org/10.1136/bcr-2023-254966">doi:10.1136/bcr-2023-254966</a>. | <a href="paper/BMJCR2024_AM.pdf">SelfArchive</a> | Case Report</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-case-report"/></svg>
-        <div class="pub-text"><b>Tanimura J</b>, Kaneko K, Hashimoto T. "A case of autoimmune glial fibrillary acidic protein astrocytopathy with excessive startle response and cortical hyperexcitability" Neurology and Clinical Neuroscience. 2024;12:257-259. <a href="https://doi.org/10.1111/ncn3.12803">doi:10.1111/ncn3.12803</a>. | <a href="paper/NCN2024_SA.pdf">SelfArchive</a> | <a href="https://www.medixpost.jp/articles/200708ad-d853-44cc-b030-7789a8765890">Medixpost</a> | Case Report</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-case-report"/></svg>
-        <div class="pub-text"><b>Tanimura J</b>, and Terakawa I. "Hoagland's Sign as a Manifestation of Parvovirus B19 Infection" Cureus. 2023;15:e43925. <a href="https://doi.org/10.7759/cureus.43925">doi:10.7759/cureus.43925</a>. | <a href="paper/Cureus2023.pdf">SelfArchive</a> | Case Report</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-original-article"/></svg>
-        <div class="pub-text">Zhang J, Lentz L, Goldammer J, Iliescu J, <b>Tanimura J</b>, Riemensperger TD "Asymmetric Presynaptic Depletion of Dopamine Neurons in a Drosophila Model of Parkinson's Disease" International Journal of Molecular Sciences. 2023;24:8585. <a href="https://doi.org/10.3390/ijms24108585">doi:10.3390/ijms24108585</a>. | <a href="paper/IJMS2023.pdf">SelfArchive</a> | Original Article</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-case-report"/></svg>
-        <div class="pub-text">Ichikawa T, Shimojima Y, Nomura S, Kishida D, Shiozaki M, <b>Tanimura J</b>, et al. "Testicular vasculitis in eosinophilic granulomatosis with polyangiitis: a case-based review" Clinical Rheumatology. 2023;42:293-299. <a href="https://doi.org/10.1007/s10067-022-06453-z">doi:10.1007/s10067-022-06453-z</a>. | <a href="#">SelfArchive</a> | Case Report</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-original-article"/></svg>
-        <div class="pub-text"><b>Tanimura J</b>, Yamamoto T, Hashimoto T.  "Clinical features and prognostic factors in patients with cancer-associated multiple ischemic stroke: A retrospective observational study" Journal of Stroke and Cerebrovascular Diseases. 2022;12:106813. <a href="https://doi.org/10.1016/j.jstrokecerebrovasdis.2022.106813">doi:10.1016/j.jstrokecerebrovasdis.2022.106813</a>. | <a href="paper/JSCVD2022_AMS.pdf">SelfArchive</a> | Original Article</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-case-report"/></svg>
-        <div class="pub-text"><b>Tanimura J</b>, Sato H, Ebitani M, Hashimoto T. "Upward gaze palsy and convergence insufficiency as a rare presentation of primary intraventricular haemorrhage" BMJ Case Reports. 2021;14:e241340. <a href="https://doi.org/10.1136/bcr-2020-241340">doi:10.1136/bcr-2020-241340</a>. | <a href="paper/BMJCR2021.pdf">SelfArchive</a> | Case Report</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-original-article"/></svg>
-        <div class="pub-text"><b>Tanimura J</b>, Nakagawa H, Tanaka T, Kikuchi A, Osada S, Tanaka Y, et al. "The clinical course and potential underlying mechanisms of everolimus-induced hyperglycemia" Endocrine Journal. 2019;66:615-620. <a href="https://doi.org/10.1507/endocrj.EJ18-0542">doi:10.1507/endocrj.EJ18-0542</a>. | <a href="paper/EJ2019.pdf">SelfArchive</a> | Original Article</div>
-    </li>
-    <li>
-        <svg class="pub-icon"><use href="#icon-original-article"/></svg>
-        <div class="pub-text">Azuma K, Takahashi H, Kan T, <b>Tanimura J</b>, Ito K, Matsumoto K, et al. "Quantitative evaluation of the influence of dopaminergic neuron on flapping locomotion" 2013 IEEE 26th International Conference on Micro Electro Mechanical Systems (MEMS). IEEE, 2013. <a href="https://doi.org/10.1109/MEMSYS.2013.6474162">doi:10.1109/MEMSYS.2013.6474162</a>. | <a href="#">SelfArchive</a> | Conference Paper</div>
-    </li>
+    <li><b>Tanimura J</b>, Yako T, Hahimoto T. "Chronic adaptive versus conventional deep brain stimulation in patients with Parkinson's disease: A randomized crossover trial with exploratory analysis of baseline-dependent response patterns" Available at medRxiv, posted on September 8, 2025: <a href="https://doi.org/10.1101/2025.09.07.25335282">https://doi.org/10.1101/2025.09.07.25335282</a>. | Preprint <svg class="pub-icon"><use href="#icon-original-article"/></svg></li>
+    <li><b>Tanimura J</b>, Yamamoto T, Takahashi Y. "Clinical measures associated with aspiration risk in multiple system atrophy: a cross-sectional study" Clinical Parkinsonism & Related Disorders. 2025. <a href="https://doi.org/10.1016/j.prdoa.2025.100401">doi: 10.1016/j.prdoa.2025.100401</a>. | Original Article <svg class="pub-icon"><use href="#icon-original-article"/></svg></li>
+    <li><b>Tanimura J</b>, Yamamoto T, Shigemoto Y, Sato N, Takahashi Y. "Dopamine transporter imaging to predict the risk of aspiration in patients with Parkinson's disease" Parkinsonism & Related Disorders. 2025;132:107307. <a href="https://doi.org/10.1016/j.parkreldis.2025.107307">doi:10.1016/j.parkreldis.2025.107307</a>. | <a href="paper/PRD2025.pdf">SelfArchive</a> | Original Article <svg class="pub-icon"><use href="#icon-original-article"/></svg></li>
+    <li>Hashimoto T, <b>Tanimura J</b>, Yako T. "Effective Target Sites in Thalamic Stimulation for Focal Hand Dystonia" Stereotact Funct Neurosurg. 2025;103:201–205.<a href="https://doi.org/10.1159/000543478">doi:10.1159/000543478</a>. | Case Series <svg class="pub-icon"><use href="#icon-case-series"/></svg></li>
+    <li>Okumura M, Mukai Y, <b>Tanimura J</b>, Takahashi Y. "Jaw-opening dystonia in Parkinson's disease improved by foslevodopa-foscarbidopa continuous subcutaneous infusion: a case report" Neurol Sci. 2024;45:5939. <a href="https://doi.org/10.1007/s10072-024-07740-0">doi:10.1007/s10072-024-07740-0</a>. | Case Report <svg class="pub-icon"><use href="#icon-case-report"/></svg></li>
+    <li><b>Tanimura J</b>, and Hashimoto T. "Case of tizanidine withdrawal showing hallucination, decorticate posture and tremor, with hypersympathetic vital signs" BMJ Case Reports. 2024;17:e254966. <a href="https://doi.org/10.1136/bcr-2023-254966">doi:10.1136/bcr-2023-254966</a>. | <a href="paper/BMJCR2024_AM.pdf">SelfArchive</a> | Case Report <svg class="pub-icon"><use href="#icon-case-report"/></svg></li>
+    <li><b>Tanimura J</b>, Kaneko K, Hashimoto T. "A case of autoimmune glial fibrillary acidic protein astrocytopathy with excessive startle response and cortical hyperexcitability" Neurology and Clinical Neuroscience. 2024;12:257-259. <a href="https://doi.org/10.1111/ncn3.12803">doi:10.1111/ncn3.12803</a>. | <a href="paper/NCN2024_SA.pdf">SelfArchive</a> | <a href="https://www.medixpost.jp/articles/200708ad-d853-44cc-b030-7789a8765890">Medixpost</a> | Case Report <svg class="pub-icon"><use href="#icon-case-report"/></svg></li>
+    <li><b>Tanimura J</b>, and Terakawa I. "Hoagland's Sign as a Manifestation of Parvovirus B19 Infection" Cureus. 2023;15:e43925. <a href="https://doi.org/10.7759/cureus.43925">doi:10.7759/cureus.43925</a>. | <a href="paper/Cureus2023.pdf">SelfArchive</a> | Case Report <svg class="pub-icon"><use href="#icon-case-report"/></svg></li>
+    <li>Zhang J, Lentz L, Goldammer J, Iliescu J, <b>Tanimura J</b>, Riemensperger TD "Asymmetric Presynaptic Depletion of Dopamine Neurons in a Drosophila Model of Parkinson's Disease" International Journal of Molecular Sciences. 2023;24:8585. <a href="https://doi.org/10.3390/ijms24108585">doi:10.3390/ijms24108585</a>. | <a href="paper/IJMS2023.pdf">SelfArchive</a> | Original Article <svg class="pub-icon"><use href="#icon-original-article"/></svg></li>
+    <li>Ichikawa T, Shimojima Y, Nomura S, Kishida D, Shiozaki M, <b>Tanimura J</b>, et al. "Testicular vasculitis in eosinophilic granulomatosis with polyangiitis: a case-based review" Clinical Rheumatology. 2023;42:293-299. <a href="https://doi.org/10.1007/s10067-022-06453-z">doi:10.1007/s10067-022-06453-z</a>. | <a href="#">SelfArchive</a> | Case Report <svg class="pub-icon"><use href="#icon-case-report"/></svg></li>
+    <li><b>Tanimura J</b>, Yamamoto T, Hashimoto T.  "Clinical features and prognostic factors in patients with cancer-associated multiple ischemic stroke: A retrospective observational study" Journal of Stroke and Cerebrovascular Diseases. 2022;12:106813. <a href="https://doi.org/10.1016/j.jstrokecerebrovasdis.2022.106813">doi:10.1016/j.jstrokecerebrovasdis.2022.106813</a>. | <a href="paper/JSCVD2022_AMS.pdf">SelfArchive</a> | Original Article <svg class="pub-icon"><use href="#icon-original-article"/></svg></li>
+    <li><b>Tanimura J</b>, Sato H, Ebitani M, Hashimoto T. "Upward gaze palsy and convergence insufficiency as a rare presentation of primary intraventricular haemorrhage" BMJ Case Reports. 2021;14:e241340. <a href="https://doi.org/10.1136/bcr-2020-241340">doi:10.1136/bcr-2020-241340</a>. | <a href="paper/BMJCR2021.pdf">SelfArchive</a> | Case Report <svg class="pub-icon"><use href="#icon-case-report"/></svg></li>
+    <li><b>Tanimura J</b>, Nakagawa H, Tanaka T, Kikuchi A, Osada S, Tanaka Y, et al. "The clinical course and potential underlying mechanisms of everolimus-induced hyperglycemia" Endocrine Journal. 2019;66:615-620. <a href="https://doi.org/10.1507/endocrj.EJ18-0542">doi:10.1507/endocrj.EJ18-0542</a>. | <a href="paper/EJ2019.pdf">SelfArchive</a> | Original Article <svg class="pub-icon"><use href="#icon-original-article"/></svg></li>
+    <li>Azuma K, Takahashi H, Kan T, <b>Tanimura J</b>, Ito K, Matsumoto K, et al. "Quantitative evaluation of the influence of dopaminergic neuron on flapping locomotion" 2013 IEEE 26th International Conference on Micro Electro Mechanical Systems (MEMS). IEEE, 2013. <a href="https://doi.org/10.1109/MEMSYS.2013.6474162">doi:10.1109/MEMSYS.2013.6474162</a>. | <a href="#">SelfArchive</a> | Conference Paper <svg class="pub-icon"><use href="#icon-original-article"/></svg></li>
 </ul>
 
 <h2>External Links</h2>
 <ul class="list-section">
     <!-- <li><a href="Krakauer2016.html">In the Lab: A Conversation on Reductionism</a></li> -->
-    <li><div class="pub-text"><a href="steve2005.html">Steve Jobs Presentation 2005</a></div></li>
-    <li><div class="pub-text"><a href="whatisjazz.html">What is Jazz? by Leonard Bernstein</a></div></li>
-    <li><div class="pub-text"><a href="http://www.acmuller.net/con-dao/analects.html">The Analects of Confucius</a></div></li>
+    <li><a href="steve2005.html">Steve Jobs Presentation 2005</a></li>
+    <li><a href="whatisjazz.html">What is Jazz? by Leonard Bernstein</a></li>
+    <li><a href="http://www.acmuller.net/con-dao/analects.html">The Analects of Confucius</a></li>
 </ul>
 
 </body>
