@@ -175,36 +175,273 @@
   </ul>
 
   <!-- Research subjects illustration: Human, Macaque, Mouse, Fly (left to right, one-stroke silhouettes) -->
-  <svg class="animal-banner" viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" aria-label="Research subjects: Human, Macaque monkey, Mouse, Fly">
-   <!-- Ground line -->
-   <line x1="0" y1="148" x2="900" y2="148" stroke="#b3d4e8" stroke-width="1.5"/>
+  <svg width="1600" height="260" viewBox="0 0 1600 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Research subjects footer illustration: human, macaque, mouse, fly">
 
-   <!-- Human (one-stroke silhouette, lateral view, facing right) -->
-   <path d="M 68,148 L 68,126 L 72,120 L 70,110 L 66,108 C 60,106 56,100 58,94 C 60,88 66,84 72,84 L 72,72 C 72,64 68,58 68,52 C 68,44 74,38 82,38 C 90,38 96,44 96,52 C 96,58 92,64 92,72 L 92,84 C 98,84 104,88 106,94 C 108,100 104,106 98,108 L 94,110 L 92,120 L 96,126 L 96,148" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-   <path d="M 70,110 L 58,120 L 54,132 M 94,110 L 106,120 L 110,132" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-   <circle cx="82" cy="30" r="10" stroke="#b3d4e8" stroke-width="2.5" fill="none"/>
+  <defs>
 
-   <!-- Macaque monkey (lateral view, facing right) -->
-   <path d="M 248,148 L 248,126 L 252,118 L 250,108 L 246,104 C 240,100 238,94 240,88 C 242,82 248,78 254,78 L 254,66 C 254,60 252,55 252,50 C 252,43 257,38 264,38 C 271,38 276,43 276,50 C 276,55 274,60 274,66 L 274,78 C 280,78 286,82 288,88 C 290,94 288,100 282,104 L 278,108 L 276,118 L 280,126 L 280,148" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-   <path d="M 248,148 L 244,138 C 240,128 236,118 238,108 C 240,98 246,94 248,88" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-   <ellipse cx="264" cy="30" rx="13" ry="11" stroke="#b3d4e8" stroke-width="2.5" fill="none"/>
-   <path d="M 277,30 C 282,30 285,33 285,36 C 285,39 282,41 278,41" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-   <path d="M 250,108 L 238,116 L 234,128 M 278,108 L 290,116 L 294,128" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <style>
 
-   <!-- Mouse (lateral view, facing right) -->
-   <path d="M 448,148 L 448,136 L 450,128 L 448,120 L 444,116 C 438,112 436,106 438,100 C 440,94 446,90 452,90 L 452,80 C 452,74 450,70 452,64 C 454,58 460,54 466,54 C 472,54 478,58 480,64 C 482,70 480,74 480,80 L 480,90 C 486,90 492,94 494,100 C 496,106 494,112 488,116 L 484,120 L 482,128 L 484,136 L 484,148" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-   <path d="M 448,148 L 442,138 C 436,125 434,112 438,100" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-   <ellipse cx="466" cy="46" rx="14" ry="12" stroke="#b3d4e8" stroke-width="2.5" fill="none"/>
-   <ellipse cx="458" cy="36" rx="6" ry="7" stroke="#b3d4e8" stroke-width="2.5" fill="none"/>
-   <path d="M 480,46 C 486,44 490,47 490,50" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      .line {
 
-   <!-- Fly / Drosophila (lateral view) -->
-   <path d="M 668,148 L 668,130 C 668,124 666,120 664,116 L 660,110 C 656,104 656,96 660,90 C 664,84 672,80 680,80 C 688,80 696,84 700,90 C 704,96 704,104 700,110 L 696,116 C 694,120 692,124 692,130 L 692,148" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-   <circle cx="680" cy="72" r="9" stroke="#b3d4e8" stroke-width="2.5" fill="none"/>
-   <path d="M 662,92 C 648,82 630,80 622,88 C 614,96 622,108 636,106 L 662,98" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-   <path d="M 698,92 C 712,82 730,80 738,88 C 746,96 738,108 724,106 L 698,98" stroke="#b3d4e8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-   <path d="M 664,108 L 652,118 L 644,126 M 672,112 L 664,124 L 658,134 M 696,108 L 708,118 L 716,126" stroke="#b3d4e8" stroke-width="2" fill="none" stroke-linecap="round"/>
-  </svg>
+        fill: none;
+
+        stroke: #b8c6d9;
+
+        stroke-width: 4.5;
+
+        stroke-linecap: round;
+
+        stroke-linejoin: round;
+
+      }
+
+      .ground {
+
+        fill: none;
+
+        stroke: #b8c6d9;
+
+        stroke-width: 3;
+
+        stroke-linecap: round;
+
+      }
+
+    </style>
+
+  </defs>
+
+  <path class="ground" d="M35 225 H1565"/>
+
+  <!-- Human -->
+
+  <path class="line" d="M170 225
+
+    C170 210 169 194 170 180
+
+    C171 168 178 158 184 147
+
+    C190 135 193 123 194 110
+
+    C195 98 192 88 188 78
+
+    C181 61 185 44 198 31
+
+    C213 16 236 13 251 28
+
+    C264 41 267 60 260 77
+
+    C255 89 256 101 263 112
+
+    C272 126 276 140 275 155
+
+    C274 172 268 188 263 202
+
+    C257 216 253 224 254 225
+
+    M217 77
+
+    C214 98 211 120 210 140
+
+    C209 163 206 187 206 225
+
+    M206 139
+
+    C194 152 182 163 171 176
+
+    C161 188 152 201 149 225
+
+    M213 139
+
+    C228 151 242 164 251 181
+
+    C258 194 264 208 270 225"/>
+
+  <!-- Macaque -->
+
+  <path class="line" d="M505 225
+
+    C498 215 495 205 495 194
+
+    C495 183 500 176 509 169
+
+    C520 161 528 150 533 137
+
+    C539 122 549 112 566 110
+
+    C586 108 608 110 630 108
+
+    C650 106 667 101 681 90
+
+    C691 82 704 77 718 80
+
+    C731 82 742 92 745 106
+
+    C747 118 743 128 733 136
+
+    C722 145 710 149 694 149
+
+    C678 149 664 152 651 160
+
+    C639 168 630 179 621 191
+
+    C610 205 599 217 592 225
+
+    M546 225
+
+    C545 212 547 199 552 188
+
+    C558 174 558 162 549 151
+
+    C541 142 532 136 522 132
+
+    C512 128 502 122 495 113
+
+    C486 102 482 90 484 76
+
+    C486 60 494 45 505 35
+
+    C515 26 529 22 541 24
+
+    C555 26 564 35 568 48
+
+    M494 76
+
+    C483 64 476 51 471 38
+
+    C466 25 459 17 448 12
+
+    M620 225
+
+    C622 210 621 197 618 184
+
+    C615 171 612 158 607 145
+
+    M677 225
+
+    C679 210 680 193 679 178
+
+    C678 164 677 154 673 143"/>
+
+  <!-- Mouse -->
+
+  <path class="line" d="M914 225
+
+    C901 225 891 221 884 214
+
+    C876 205 875 195 880 186
+
+    C886 177 897 173 911 172
+
+    C913 159 920 147 931 138
+
+    C943 128 957 124 973 124
+
+    C995 124 1014 132 1029 148
+
+    C1043 163 1050 180 1049 197
+
+    C1048 210 1042 220 1032 225
+
+    M959 124
+
+    C954 111 958 99 969 91
+
+    C979 84 991 84 1001 91
+
+    C1011 99 1015 111 1010 124
+
+    M937 225
+
+    C943 214 946 203 947 191
+
+    M982 225
+
+    C986 214 990 203 992 191
+
+    M1020 225
+
+    C1018 214 1014 204 1008 195
+
+    M884 214
+
+    C864 211 846 211 829 214
+
+    C808 218 788 216 772 209
+
+    C760 204 754 195 755 185
+
+    C756 174 765 167 780 165
+
+    C797 163 813 166 828 174"/>
+
+  <!-- Fly -->
+
+  <path class="line" d="M1289 225
+
+    C1287 214 1287 202 1289 189
+
+    C1290 177 1294 166 1302 157
+
+    C1310 148 1320 144 1332 144
+
+    C1344 144 1354 148 1362 157
+
+    C1370 166 1374 177 1375 189
+
+    C1377 202 1377 214 1375 225
+
+    M1332 144
+
+    C1327 132 1328 121 1334 111
+
+    C1340 102 1348 97 1358 96
+
+    M1328 143
+
+    C1317 131 1304 121 1290 114
+
+    C1272 106 1256 103 1239 105
+
+    C1224 107 1210 112 1197 121
+
+    M1336 143
+
+    C1348 132 1361 122 1375 114
+
+    C1392 106 1409 103 1425 105
+
+    C1441 108 1455 114 1468 122
+
+    M1301 167
+
+    C1287 162 1274 161 1260 162
+
+    C1245 164 1231 169 1217 179
+
+    M1363 167
+
+    C1377 162 1390 161 1404 162
+
+    C1419 164 1433 169 1447 179
+
+    M1302 196
+
+    C1290 198 1278 204 1268 214
+
+    M1362 196
+
+    C1374 198 1386 204 1396 214
+
+    M1324 108
+
+    C1321 101 1321 94 1325 88
+
+    M1340 106
+
+    C1342 99 1346 93 1351 89"/>
+
+</svg>
 
   <p><strong>Update:</strong> April 11, 2026</p>
   
