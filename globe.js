@@ -151,7 +151,7 @@
                           var places = parseCSV(csvText);
               places.forEach(function (p) {
                         if (p.type === "country") {
-                                    visitedCountryCodes.add(p.code);
+                                    p.code = String(Number(p.code)); visitedCountryCodes.add(p.code);
                         } else if (p.type === "state") {
                                     var abbr = p.code.replace("US-", "");
                                     if (stateFIPS[abbr]) visitedStateFIPS.add(stateFIPS[abbr]);
